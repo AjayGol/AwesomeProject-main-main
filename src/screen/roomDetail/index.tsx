@@ -82,13 +82,11 @@ function TutorialScreen({route}: any) {
   };
 
   const renderBottom = () => {
-    if (Constant.isIOS) {
-      return (
-        <KeyboardAvoidingView behavior={Constant.isIOS ? 'padding' : 'height'}>
-          {renderMainData()}
-        </KeyboardAvoidingView>
-      );
-    }
+    return (
+      <KeyboardAvoidingView behavior={Constant.isIOS ? 'padding' : 'height'}>
+        {renderMainData()}
+      </KeyboardAvoidingView>
+    );
   };
 
   const renderMainData = () => {
