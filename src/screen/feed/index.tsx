@@ -10,8 +10,11 @@ import {
 import io from 'socket.io-client';
 import {useNavigation} from '@react-navigation/native';
 import stylesGlobal from '../../helper/globalStyle';
+import Constant from '../../helper/constant';
 
-const socket = io('http://localhost:4000');
+const socket = io(
+  Constant.isIOS ? 'http://localhost:4000' : 'http://10.0.2.2:4000',
+);
 
 export default function FeedScreen() {
   const navigation: any = useNavigation();
@@ -27,10 +30,11 @@ export default function FeedScreen() {
   }, []);
 
   const getTeamList = () => {
-    return fetch('http://localhost:4000/api')
+    return fetch(
+      Constant.isIOS ? 'http://localhost:4000/api' : 'http://10.0.2.2:4000/api',
+    )
       .then(response => response.json())
       .then(json => {
-        console.log(`dssdadsdfs ${JSON.stringify(json)}`);
         setListData(json);
         return true;
       })
